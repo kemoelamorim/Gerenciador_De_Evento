@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head th:replace="~{base:: head}"></head>
+	<body>
+	<div th:replace="~{base :: logo}"></div>
+		<div class="container">
+			<div th:replace="~{base :: titulo('Lista de eventos')}"></div>
+			<nav class="navbar navbar-expand mb-1 navbar-light bg-light d-flex justify-content-between ">
+				<div class="navbar-nav ">
+					<a class="nav-item nav-link " href="#">Eventos</a> 
+					<a class="nav-item nav-link" href="#">Salas</a> 
+					<a class="nav-item nav-link" href="#">Pessoas</a> 
+					<a class="nav-item nav-link" href="#">Espaços</a>
+				</div>
+				<div class="mt-1">
+					<h3><a href="/cadastrarEvento"><button class="btn btn-outline-secondary">Novo</button></a></h3>	
+				
+				</div>	
+			</nav>
+			<table class="table table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Local</th>
+						<th>Data</th>
+						<th>Hora</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="evento : ${eventos}">
+						<td> <a th:href="@{evento/detalhesEvento/{id}(id = ${evento.id}) }"><span th:text="${evento.nome}"></span></a></td>
+						<td><span th:text="${evento.local}"></span></td>
+						<td><span th:text="${evento.data}"></span></td>
+						<td><span th:text="${evento.hora}"></span></td>								
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</body>
+</html>

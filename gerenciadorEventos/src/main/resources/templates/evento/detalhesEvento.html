@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head th:replace="~{base:: head}"></head>
+<body>
+	<div th:replace="~{base :: logo}"></div>
+	<div class="container">	
+		<div th:replace="~{base :: titulo('Detalhes do Evento')}"></div>
+		<div th:each="evento : ${evento}">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Local</th>
+						<th>Data</th>
+						<th>Hora</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><span th:text="${evento.nome}"></span></td>
+						<td><span th:text="${evento.local}"></span></td>
+						<td><span th:text="${evento.data}"></span></td>
+						<td><span th:text="${evento.hora}"></span></td>		
+					</tr>						
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
